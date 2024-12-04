@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>REMIX</title>
+
+    <script>
+      // Async function to open folder selection dialog via the server
+      async function openFolderDialog() {
+        try {
+          const queryText = document.getElementById("sql_query").value; //keep values
+          document.getElementById("hidden_sql_query").value = queryText; // keep values
+
+          const response = await fetch('/open_folder_dialog');
+          if (!response.ok) throw new Error('Failed to open folder dialog.');
+          const data = await response.json();
+          document.getElementById("folder_path").value = data.folder_path;
+        } catch (error) {
+          showError(`Error: ${error.message}`);
+        }
+      }
+
+      function previewCountChanged() {
+        document.getElementById("query-form").submit();
+      }
+
+      function fixQuery() {
+        const queryText = document.getElementById("sql_query").value;
+        document.getElementById("hidden_sql_query").value = queryText;
+        document.getElementById("fix-query-form").submit();
+      }
+
+      function showError(message) {
+        const alertDiv = document.getElementById("error-alert");
+        alertDiv.innerHTML = `<div class="alert alert-danger">${message}</div>`;
+        alertDiv.style.display = "block";
+      }
+
+      function showLoading() {
+        document.querySelector('.spinner-border').style.display = 'inline-block';
+      }
+    </script>
+      <style>
+        #query-preview {
+          max-height: 400px;
+          max-width: 100%;
+          overflow: auto;
+        }
+  
+        #files-list {
+          max-height: 200px;
+          overflow: auto;
+        }
+      </style>
+  </head>
+
+  <body>
+    <div class="container mt-5">
+      <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+          <h2 class="text-center">REMIX Data Query Tool</h2>
+        </div>
+
+        <div class="card-body">
+          <div class="row">
+            <!-- Folder Selection Section -->
+            <div class="col-md-4">
+              <div class="card mb-3 shadow-sm">
+                <div class="card-header bg-secondary text-white">Select Folder</div>
+                <div class="card-body">
+                  <form method="post">
+                    <div class="form-group">
+                      <label for="folder_path">Folder Path:</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" id="folder_path" name="folder_path" value="{{ folder_path }}" required>
+                        <div class="input-group-append">
+                          <button type="button" class="btn btn-outline-secondary" onclick="openFolderDialog()">Browse</button>
+                        </div>
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block" onclick="showLoading()">Select Folder</button>
+                  </form>
+                  <div id="error-alert" class="mt-2"></div>
+
+                  <ul class="list-group mt-2" id="files-list">
+                    {% if files %}
+                      {% for file in files %}
+                        <li class="list-group-item">{{ file }}</li>
+                      {% endfor %}
+                    {% else %}
+                      <li class="list-group-item">No files available.</li>
+                    {% endif %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- SQL Query Section -->
+            <div class="col-md-8">
+              <form method="post" id="query-form">
+                <div class="form-group">
+                  <label for="sql_query">Enter SQL Query:</label>
+                  <textarea class="form-control" id="sql_query" name="sql_query" rows="4">{{ sql_query }}</textarea>
+                </div>
+                <div class="form-group">
+                  <label for="preview_count">Preview:</label>
+                  <select class="form-control" name="preview_count" onchange="previewCountChanged()">
+                    <option value="10" {% if preview_count == '10' %}selected{% endif %}>10</option>
+                    <option value="100" {% if preview_count == '100' %}selected{% endif %}>100</option>
+                    <option value="500" {% if preview_count == '500' %}selected{% endif %}>500</option>
+                    <option value="1000" {% if preview_count == '1000' %}selected{% endif %}>1000</option>
+                  </select>
+                </div>
+                <div class="form-row">
+                  <div class="col-9">
+                    <button type="submit" name="query" class="btn btn-primary btn-block">Run Query</button>
+                  </div>
+                  <div class="col-3">
+                    <button type="button" class="btn btn-secondary btn-block" onclick="fixQuery()">Fix Query</button>
+                  </div>
+                </div>          
+              </form>
+
+              <div class="spinner-border text-primary mt-3" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+              <form method="post" id="fix-query-form" action="/">
+                <input type="hidden" id="hidden_sql_query" name="hidden_sql_query">
+                <input type="hidden" name="fix_query" value="true">
+              </form>
+
+              {% if preview_data %}
+                <div class="card shadow-sm mt-3" id="query-preview">
+                  <div class="card-header bg-primary text-white">Query Preview</div>
+                  <div class="card-body">
+                    {{ preview_data | safe }}
+                  </div>
+                </div>
+              {% endif %}
+              <form action="/download" method="get" class="mb-3">
+                <button type="submit" class="btn btn-success btn-block">Download Query Results</button>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

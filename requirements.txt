@@ -1,0 +1,7 @@
+Flask
+pandas
+pandasql
+tk
+pyqt5
+groq
+python-dotenv
