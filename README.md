@@ -1,4 +1,4 @@
-# LLM-Enhanced SQL Query Assistant
+# ReMix: LLM-Enhanced SQL Query Assistant
 
 An intuitive tool for querying and interacting with local datasets (CSV, Excel, JSON), powered by a Large Language Model (LLM) to assist in SQL query generation, fixing, and execution. This lightweight application combines simplicity with AI-driven capabilities to make data querying more accessible and efficient.
 
@@ -38,4 +38,5 @@ An intuitive tool for querying and interacting with local datasets (CSV, Excel, 
 ```bash
 git clone https://github.com/kennybix/remix.git
 cd remix
-'''
+```
+
