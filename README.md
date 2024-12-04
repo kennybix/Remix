@@ -13,9 +13,9 @@ An intuitive tool for querying and interacting with local datasets (CSV, Excel, 
 - **LLM-Powered Query Fixing**: Automatically fix broken SQL queries or generate SQL queries from plain-text prompts using an integrated LLM.
 ![LLM Fixing](images/remix-app-3.png)
 - **Data Export**: Download query results as a CSV file for further analysis.
-![Data Export](images/remix-app-4.png)
+![Data Export](images/remix-app-5.png)
 - **Interactive Interface**: User-friendly web interface built with Flask and Bootstrap.
-
+![Interactive Interface](images/remix-app-4.png)
 ---
 
 ## Tech Stack
