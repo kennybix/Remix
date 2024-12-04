@@ -1,14 +1,18 @@
 # ReMix: LLM-Enhanced SQL Query Assistant
 
 An intuitive tool for querying and interacting with local datasets (CSV, Excel, JSON), powered by a Large Language Model (LLM) to assist in SQL query generation, fixing, and execution. This lightweight application combines simplicity with AI-driven capabilities to make data querying more accessible and efficient.
-
+![ReMix App](image/remix-app-1.png)
 ---
 
 ## Features
 - **Folder Selection**: Browse and load local datasets dynamically.
+![Folder Selection](image/remix-app-1b.png)
 - **SQL Query Execution**: Run SQL queries on structured data with real-time previews.
+![SQL Query Execution](image/remix-app-2.png)
 - **LLM-Powered Query Fixing**: Automatically fix broken SQL queries or generate SQL queries from plain-text prompts using an integrated LLM.
+![LLM Fixing](image/remix-app-3.png)
 - **Data Export**: Download query results as a CSV file for further analysis.
+![Data Export](image/remix-app-4.png)
 - **Interactive Interface**: User-friendly web interface built with Flask and Bootstrap.
 
 ---
