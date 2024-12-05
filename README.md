@@ -49,14 +49,12 @@ cd remix
 Use pip to install the required Python libraries:
 
 bash
-Copy code
 pip install -r requirements.txt
 
 ### 3. Set Up Environment Variables
 Create a .env file in the project root and add your API keys:
 
 ```makefile
-Copy code
 GROQ_API_KEY=your_groq_api_key_here
 ```
 
@@ -64,7 +62,6 @@ GROQ_API_KEY=your_groq_api_key_here
 Start the Flask server:
 
 ```bash
-Copy code
 python app.py
 Access the application at: http://127.0.0.1:5000/
 ```
