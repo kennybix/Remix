@@ -70,13 +70,13 @@ Access the application at: http://127.0.0.1:5000/
 ## Usage Guide
 
 ### Folder Selection
-#### 1. Click the "Browse" button to select a folder containing your datasets.
-#### 2. The files in the selected folder will be displayed on the left-hand side.
+1. Click the "Browse" button to select a folder containing your datasets.
+2. The files in the selected folder will be displayed on the left-hand side.
 
 ### SQL Query Execution
-#### 1. Write or paste your SQL query in the input box.
-#### 2. Click "Run Query" to execute and preview the results.
-#### 3. Adjust the number of preview rows using the dropdown menu.
+1. Write or paste your SQL query in the input box.
+2. Click "Run Query" to execute and preview the results.
+3. Adjust the number of preview rows using the dropdown menu.
 
 ### LLM Query Assistance
 1. Enter a plain-text prompt or an incomplete SQL query.
