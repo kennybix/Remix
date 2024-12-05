@@ -70,38 +70,41 @@ Access the application at: http://127.0.0.1:5000/
 ```
 ---
 
-### Usage Guide
+## Usage Guide
 
-## Folder Selection
-# 1. Click the "Browse" button to select a folder containing your datasets.
-# 2. The files in the selected folder will be displayed on the left-hand side.
+### Folder Selection
+#### 1. Click the "Browse" button to select a folder containing your datasets.
+#### 2. The files in the selected folder will be displayed on the left-hand side.
 
-## SQL Query Execution
-Write or paste your SQL query in the input box.
-Click "Run Query" to execute and preview the results.
-Adjust the number of preview rows using the dropdown menu.
+### SQL Query Execution
+#### 1. Write or paste your SQL query in the input box.
+#### 2. Click "Run Query" to execute and preview the results.
+#### 3. Adjust the number of preview rows using the dropdown menu.
 
-## LLM Query Assistance
-Enter a plain-text prompt or an incomplete SQL query.
-Click "Fix Query" to generate or correct the query using the LLM.
-The fixed query will replace the input.
+### LLM Query Assistance
+1. Enter a plain-text prompt or an incomplete SQL query.
+2. Click "Fix Query" to generate or correct the query using the LLM.
+3. The fixed query will replace the input.
 
-## Export Results
-After running a query, click "Download Query Results" to save the output as a CSV file.
+### Export Results
+1. After running a query, click "Download Query Results" to save the output as a CSV file.
 
 ---
 
-Key Features in Action
-Natural Language to SQL Conversion:
-Enter: "List all employees earning more than $50,000"
-LLM generates: SELECT * FROM employees WHERE salary > 50000;
-Broken Query Fixing:
-Input: SELEC * FROM employees
-Fixed: SELECT * FROM employees;
-Future Enhancements
-Support for additional file formats (Parquet, Avro).
-Distributed querying capabilities.
-Integration with cloud storage (S3, Google Drive).
-Advanced AI-driven insights (e.g., summarization, trend detection).
+## Key Features in Action
+### 1. Natural Language to SQL Conversion:
+- Enter: "List all employees earning more than $50,000"
+- LLM generates: SELECT * FROM employees WHERE salary > 50000;
+### 2. Broken Query Fixing:
+- Input: SELEC * FROM employees
+- Fixed: SELECT * FROM employees;
+
+---
+
+## Future Enhancements
+- Support for additional file formats (Parquet, Avro).
+- Distributed querying capabilities.
+- Integration with cloud storage (S3, Google Drive).
+- Advanced AI-driven insights (e.g., summarization, trend detection).
 
 
